@@ -352,7 +352,7 @@ function buildSheet() {
     function draw() {
       try {
         var cols = loaded.length <= 3 ? Math.max(loaded.length, 1) : 4;
-        var CW = 512, CH = 680, GAP = 18, PAD = 36, LAB = 56;
+        var CW = 512, CH = 680, GAP = 18, PAD = 36, LAB = 104;
         var ROWH = CH + LAB;
         var rows = Math.ceil(loaded.length / cols);
         var W = PAD * 2 + CW * cols + GAP * (cols - 1);
@@ -374,8 +374,22 @@ function buildSheet() {
           }
           var mark = "①②③④⑤⑥⑦".charAt(k);
           g.fillStyle = "#1b1b1f";
-          g.font = "600 34px sans-serif";
-          g.fillText(mark + " " + o.item.label + " · " + o.item.it.es, x + 4, y + CH + 44);
+          g.font = "600 28px sans-serif";
+          // Los nombres en español son mucho más largos que en chino/japonés:
+          // envolver la etiqueta en varias líneas dentro de su columna.
+          var full = mark + " " + o.item.label + " · " + o.item.it.es;
+          var words = full.split(" ");
+          var lines = [];
+          var cur = "";
+          words.forEach(function (w) {
+            var test = cur ? cur + " " + w : w;
+            if (g.measureText(test).width > CW - 16 && cur) { lines.push(cur); cur = w; }
+            else { cur = test; }
+          });
+          if (cur) lines.push(cur);
+          lines.slice(0, 3).forEach(function (ln, li) {
+            g.fillText(ln, x + 4, y + CH + 36 + li * 32);
+          });
         });
         c.toBlob(function (b) {
           if (b) resolve(b); else reject(new Error("toBlob"));
