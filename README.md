@@ -15,15 +15,15 @@ También se puede abrir en local haciendo doble clic en **index.html** (debe est
 
 ### Originales locales (opcional)
 
-Si tienes otra copia local de los originales (por defecto en el directorio hermano `../二次元换装库/originals/`, con la estructura `img/<id>.jpg` y `line/<id>.png`),
+Si tienes otra copia local de los originales (por defecto en el directorio hermano `../originales-char-db/originals/`, con la estructura `img/<id>.jpg` y `line/<id>.png`),
 al abrir con doble clic se leerán primero esos archivos locales y los botones de la ventana cambiarán a «Descargar original (local · 1024×1536)» y «Descargar lineart (local · PNG)», totalmente sin conexión.
 
 La ruta se cambia en **config.js**:
 
 ```js
 window.LOCAL_ORIGINALS = {
-  img: "../二次元换装库/originals/img/",
-  line: "../二次元换装库/originals/line/"
+  img: "../originales-char-db/originals/img/",
+  line: "../originales-char-db/originals/line/"
 };
 ```
 
