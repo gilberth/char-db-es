@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Biblioteca de cambio de atuendo de personajes 2D · Versión en español (peinado / atuendo / pose / armado)</title>
+<link rel="stylesheet" href="assets/style.css?v=8">
+</head>
+<body>
+<header><div class="wrap">
+  <div class="head-row">
+    <h1>Biblioteca de cambio de atuendo de personajes 2D<span>Peinado 306 · Atuendo 440 · Pose 281 · Total 1,027</span></h1>
+    <div class="tips-hover" id="tipsHover">
+      <button class="tips-trigger" id="tipsTrigger" aria-expanded="false" aria-controls="tipsPanel">Cómo usar + Licencia</button>
+      <div class="tips-panel" id="tipsPanel" role="dialog" aria-label="Instrucciones de uso y licencia">
+        <ul>
+          <li><b>Qué es</b>: una biblioteca de referencia del mismo personaje 2D cambiando peinado, ojos, atuendo y pose. Cada tarjeta trae etiquetas Danbooru, listas para pegar en Illustrious, NovelAI, Pony y otros modelos.</li>
+          <li><b>Flujo</b>: en las tres pestañas pulsa «Añadir al armado» para elegir las piezas → en la página «Armar» elige expresión, encuadre y fondo → copia el prompt.</li>
+          <li><b>Consistencia del personaje</b>: peinado, flequillo, color de pelo, color de ojos y complexión forman la «fila fija»: al cambiar de atuendo o pose no cambies ni una palabra; por imagen cambia como máximo 3 variables.</li>
+          <li><b>Poses</b>: algunas tarjetas de pose tienen versión «lineart» (PNG), lista para ControlNet.</li>
+          <li><b>Licencia</b>: material gratuito, con uso comercial, modificación y sin obligación de atribución; <b>prohibido redistribuir, republicar o revender las imágenes en sí</b>; prohibido usarlo para personas reales o menores. Esta página es solo una interfaz de búsqueda en español; los derechos de las imágenes pertenecen a su autora original.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="attr" id="attrNote">
+      <b>Atribución</b>
+      <span>Material original de taki AI / @taki_auto, en el sitio original. Esta es una interfaz en español basada en la versión china de sleepy-zone. Esta página solo incluye miniaturas; las imágenes originales y los linearts se obtienen desde el sitio original.</span>
+    </div>
+  </div>
+  <nav class="nav">
+    <button data-set="hair">Peinado<b>306</b></button>
+    <button data-set="outfit">Atuendo<b>440</b></button>
+    <button data-set="pose">Pose<b>281</b></button>
+    <button data-set="build">🧩 Armar<i>al terminar, genera el prompt</i></button>
+  </nav>
+</div></header>
+
+<div class="dlbar"><div class="wrap">
+  <div class="dl-txt">
+    <b>📦 Descarga en paquete de las imágenes originales</b>
+    <span>1,027 imágenes originales JPEG (1024×1536) + 281 linearts de pose en PNG, 191 MB en total</span>
+  </div>
+  <div class="dl-btns">
+    <a class="dl-btn" href="https://pan.baidu.com/s/1HOBVBkWRRPVW1rKmrWt7Fw?pwd=5NR1" target="_blank" rel="noopener">Baidu Netdisk ↗</a>
+    <a class="dl-btn" href="https://pan.quark.cn/s/b18c3791645b" target="_blank" rel="noopener">Quark Netdisk ↗</a>
+  </div>
+</div></div>
+
+<div class="tools"><div class="wrap"><div id="toolbar"></div></div></div>
+
+<main><div class="wrap"><div class="grid" id="grid"></div></div></main>
+
+<footer><div class="wrap">
+  <p class="foot-intro">El mismo personaje, cambiando peinado, ojos, atuendo y pose: separa lo «fijo» de lo «variable» y usa siempre la misma ella en 300 páginas.</p>
+  <div class="links">
+    <a class="btn" href="https://charadb-2fi.pages.dev/" target="_blank" rel="noopener">Sitio original ↗</a>
+    <a class="btn" href="https://x.com/taki_auto/status/2116818463125803239" target="_blank" rel="noopener">Publicación de la autora ↗</a>
+    <a class="btn" href="https://x.com/taki_auto" target="_blank" rel="noopener">Autora @taki_auto ↗</a>
+    <a class="btn" href="https://github.com/sleepy-zone/char-db-cn" target="_blank" rel="noopener">Repo en chino (base) ↗</a>
+    <a class="btn xlink" href="https://sleepyzone.online/ai-ref-library-cn/" rel="noopener">↗ Sitio hermano: tres bibliotecas realistas + combinación aleatoria</a>
+  </div>
+  <b>Fuente del material</b>: la base de datos de armado de personajes de la autora (taki AI / @taki_auto). Esta página es una interfaz de búsqueda en español y solo incluye miniaturas; las imágenes originales y los linearts se obtienen desde el sitio original.<br>
+  <b>Licencia</b>: uso comercial y modificación gratuitos, sin obligación de atribución; prohibido redistribuir o revender las imágenes en sí, y prohibido usarlas para personas reales o menores. El material se entrega tal cual, sin garantía.
+</div></footer>
+
+<div class="modal" id="modal">
+  <div class="mbox">
+    <div class="mimg">
+      <img id="mimg" alt="">
+      <button class="nav-arrow l" id="mprev" aria-label="Anterior">‹</button>
+      <button class="nav-arrow r" id="mnext" aria-label="Siguiente">›</button>
+    </div>
+    <aside class="mside">
+      <div class="mhead"><h2 id="mtitle"></h2><button class="close" id="mclose" aria-label="Cerrar">×</button></div>
+      <dl class="kv" id="mfields"></dl>
+      <div class="sect">Etiquetas Danbooru</div>
+      <div class="chips" id="mtags"></div>
+      <div class="acts">
+        <a id="mfull" href="#" target="_blank" rel="noopener">Abrir original (sitio original) ↗</a>
+        <a id="mline" href="#" target="_blank" rel="noopener" hidden>Abrir lineart (sitio original) ↗</a>
+        <button id="mcopy">Copiar etiquetas</button>
+        <button id="madd" class="primary">Añadir al armado</button>
+      </div>
+      <div class="keys"><kbd>←</kbd><kbd>→</kbd> anterior / siguiente · <kbd>Esc</kbd> cerrar</div>
+    </aside>
+  </div>
+</div>
+
+<script src="config.js?v=8"></script>
+<script src="data.js?v=8"></script>
+<script src="assets/app.js?v=8"></script>
+</body>
+</html>
